@@ -54,7 +54,7 @@ func main() {
 			value := gofakeit.Generate(CLI.SQL.Columns[column])
 
 			if _, err := strconv.Atoi(value); err != nil {
-				value = "'" + strings.Replace(value, "'", "\\'", -1) + "'"
+				value = "'" + strings.Replace(value, "'", "''", -1) + "'"
 			}
 			values = append(values, value)
 		}
@@ -63,7 +63,18 @@ func main() {
 		if !CLI.SQL.Bulk {
 			row = insertStmt + " "
 		}
-		row += fmt.Sprintf("(%s)\n", strings.Join(values, ","))
+
+		row += fmt.Sprintf("(%s)", strings.Join(values, ","))
+
+		if CLI.SQL.Bulk {
+			if i == CLI.SQL.Count-1 {
+				row += ";\n"
+			} else {
+				row += ",\n"
+			}
+		} else {
+			row += ";\n"
+		}
 
 		io.WriteString(os.Stdout, row)
 
