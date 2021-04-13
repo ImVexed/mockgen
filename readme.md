@@ -12,8 +12,7 @@ Currently, the tool generates postgres flavored SQL, but maybe in the future tha
 go install github.com/ImVexed/mockgen@latest
 ```
 
-TODO: Make an actions stage to build a static binary
-
+or download directly from [releases](https://github.com/ImVexed/mockgen/releases)
 ## Usage
 
 ```bash
