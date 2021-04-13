@@ -49,187 +49,255 @@ INSERT INTO "message" ("room_id","user_id","author_name","content") VALUES
 ## Fake Data Types
 Under the hood we use [GoFakeIt](https://github.com/brianvoe/gofakeit), see their readme for more info
 
-```
-sentence  | wordcount - Number of words in a sentence
-rgbcolor 
-petname 
-country 
-generate  | str - String value to generate from
-domainname 
-xml  | type - Type of XML, single or array | rootelement - Root element wrapper name | recordelement - Record element for each record row | rowcount - Number of rows in JSON array | fields - Fields containing key name and function to run in json format | indent - Whether or not to add indents and newlines
-int8 
-int32 
-state 
-cartype 
-day 
-creditcardnumber  | types - A select number of types you want to use when generating a credit card number | bins - Optional list of prepended bin numbers to pick from | gaps - Whether or not to have gaps in number
-bitcoinaddress 
-shufflestrings  | strs - Delimited separated strings
-hackerabbreviation 
-programminglanguage 
-json  | type - Type of JSON, object or array | rowcount - Number of rows in JSON array | fields - Fields containing key name and function to run in json format | indent - Whether or not to add indents and newlines
-shuffleints  | ints - Delimited separated integers
-car 
-carfueltype 
-carmodel 
-firstname 
-hexcolor 
-httpmethod 
-animal 
-snack 
-username 
-achrouting 
-emojidescription 
-digitn  | count - Number of digits to generate
-animaltype 
-streetname 
-streetsuffix 
-longitude 
-emojialias 
-vegetable 
-streetnumber 
-beername 
-firefoxuseragent 
-hipstersentence  | wordcount - Number of words in a sentence
-uint32 
-zip 
-beerhop 
-domainsuffix 
-buzzword 
-languageabbreviation 
-appname 
-latituderange  | min - Minimum range | max - Maximum range
-paragraph  | paragraphcount - Number of paragraphs | sentencecount - Number of sentences in a paragraph | wordcount - Number of words in a sentence | paragraphseparator - String value to add between paragraphs
-operauseragent 
-jobtitle 
-hipsterword 
-beermalt 
-beerblg 
-number  | min - Minimum integer value | max - Maximum integer value
-uint64 
-lexify  | str - String value to replace #'s
-address 
-name 
-phone 
-adjective 
-loremipsumparagraph  | paragraphcount - Number of paragraphs | sentencecount - Number of sentences in a paragraph | wordcount - Number of words in a sentence | paragraphseparator - String value to add between paragraphs
-uuid 
-chromeuseragent 
-timezone 
-emojicategory 
-emojitag 
-lunch 
-beerstyle 
-hackeradjective 
-imagepng  | width - Image width in px | height - Image height in px
-beeryeast 
-beeralcohol 
-word 
-flipacoin 
-color 
-safariuseragent 
-fileextension 
-question 
-ipv6address 
-company 
-hipsterparagraph  | paragraphcount - Number of paragraphs | sentencecount - Number of sentences in a paragraph | wordcount - Number of words in a sentence | paragraphseparator - String value to add between paragraphs
-float32 
-float64range  | min - Minimum float64 value | max - Maximum float64 value
-digit 
-quote 
-regex  | str - Regex RE2 syntax string
-creditcardexp 
-dog 
-adverb 
-nanosecond 
-float64 
-farmanimal 
-breakfast 
-lastname 
-loremipsumsentence  | wordcount - Number of words in a sentence
-achaccount 
-hackerverb 
-int64 
-numerify  | str - String value to replace #'s
-street 
-cartransmissiontype 
-teams  | people - Array of people | teams - Array of teams
-noun 
-bool 
-letter 
-ssn 
-job 
-csv  | rowcount - Number of rows in JSON array | fields - Fields containing key name and function to run in json format | delimiter - Separator in between row values
-float32range  | min - Minimum float32 value | max - Maximum float32 value
-weighted  | options - Array of any values | weights - Array of weights
-longituderange  | min - Minimum range | max - Maximum range
-carmaker 
-nameprefix 
-email 
-second 
-minute 
-month 
-timezoneabv 
-dinner 
-person 
-verb 
-preposition 
-safecolor 
-date  | format - Date time string format output
-currencyshort 
-currencylong 
-creditcardcvv 
-hackerphrase 
-hackernoun 
-imagejpeg  | width - Image width in px | height - Image height in px
-httpstatuscode 
-httpstatuscodesimple 
-currency 
-language 
-randomstring  | strs - Delimited separated strings
-cat 
-gender 
-phoneformatted 
-creditcardtype 
-hackeringverb 
-lettern  | count - Number of digits to generate
-countryabr 
-streetprefix 
-uint16 
-appversion 
-companysuffix 
-bs 
-int16 
-appauthor 
-beeribu 
-monthstring 
-bitcoinprivatekey 
-emoji 
-dessert 
-city 
-stateabr 
-namesuffix 
-url 
-timezoneoffset 
-creditcard 
-joblevel 
-fruit 
-latitude 
-weekday 
-jobdescriptor 
-filemimetype 
-gamertag 
-password  | lower - Whether or not to add lower case characters | upper - Whether or not to add upper case characters | numeric - Whether or not to add numeric characters | special - Whether or not to add special characters | space - Whether or not to add spaces | length - Number of characters in password
-loglevel 
-year 
-imageurl  | width - Image width in px | height - Image height in px
-phrase 
-loremipsumword 
-ipv4address 
-useragent 
-hour 
-timezonefull 
-timezoneregion 
-price  | min - Minimum price value | max - Maximum price value
-uint8 
-```
+- xml
+	-  type, string, Type of XML, single or array
+	-  rootelement, string, Root element wrapper name
+	-  recordelement, string, Record element for each record row
+	-  rowcount, int, Number of rows in JSON array
+	-  fields, []Field, Fields containing key name and function to run in json format
+	-  indent, bool, Whether or not to add indents and newlines
+- int8
+- shuffleints
+	-  ints, []int, Delimited separated integers
+- verb
+- loglevel
+- timezoneregion
+- hipsterword
+- hipsterparagraph
+	-  paragraphcount, int, Number of paragraphs
+	-  sentencecount, int, Number of sentences in a paragraph
+	-  wordcount, int, Number of words in a sentence
+	-  paragraphseparator, string, String value to add between paragraphs
+- weighted
+	-  options, []string, Array of any values
+	-  weights, []float, Array of weights
+- quote
+- safariuseragent
+- httpmethod
+- jobtitle
+- emojitag
+- int32
+- streetnumber
+- question
+- languageabbreviation
+- int64
+- generate
+	-  str, string, String value to generate from
+- ipv6address
+- day
+- timezonefull
+- creditcardcvv
+- bs
+- csv
+	-  rowcount, int, Number of rows in JSON array
+	-  fields, []Field, Fields containing key name and function to run in json format
+	-  delimiter, string, Separator in between row values
+- latituderange
+	-  min, float, Minimum range
+	-  max, float, Maximum range
+- cartype
+- cat
+- dessert
+- zip
+- bitcoinaddress
+- domainname
+- achrouting
+- stateabr
+- phrase
+- price
+	-  min, float, Minimum price value
+	-  max, float, Maximum price value
+- programminglanguage
+- imageurl
+	-  width, int, Image width in px
+	-  height, int, Image height in px
+- animaltype
+- farmanimal
+- nameprefix
+- bool
+- paragraph
+	-  paragraphcount, int, Number of paragraphs
+	-  sentencecount, int, Number of sentences in a paragraph
+	-  wordcount, int, Number of words in a sentence
+	-  paragraphseparator, string, String value to add between paragraphs
+- monthstring
+- creditcardnumber
+	-  types, []string, A select number of types you want to use when generating a credit card number
+	-  bins, []string, Optional list of prepended bin numbers to pick from
+	-  gaps, bool, Whether or not to have gaps in number
+- appauthor
+- countryabr
+- cartransmissiontype
+- dog
+- int16
+- float64
+- regex
+	-  str, string, Regex RE2 syntax string
+- minute
+- weekday
+- currencylong
+- appname
+- address
+- beeralcohol
+- nanosecond
+- beerhop
+- adverb
+- url
+- second
+- hour
+- appversion
+- password
+	-  lower, bool, Whether or not to add lower case characters
+	-  upper, bool, Whether or not to add upper case characters
+	-  numeric, bool, Whether or not to add numeric characters
+	-  special, bool, Whether or not to add special characters
+	-  space, bool, Whether or not to add spaces
+	-  length, int, Number of characters in password
+- carfueltype
+- domainsuffix
+- creditcardexp
+- hackerverb
+- hackeringverb
+- filemimetype
+- emojidescription
+- carmodel
+- loremipsumparagraph
+	-  paragraphcount, int, Number of paragraphs
+	-  sentencecount, int, Number of sentences in a paragraph
+	-  wordcount, int, Number of words in a sentence
+	-  paragraphseparator, string, String value to add between paragraphs
+- float32range
+	-  min, float, Minimum float32 value
+	-  max, float, Maximum float32 value
+- color
+- creditcard
+- company
+- uint64
+- lettern
+	-  count, uint, Number of digits to generate
+- dinner
+- carmaker
+- person
+- adjective
+- uuid
+- month
+- year
+- uint32
+- street
+- phoneformatted
+- timezoneoffset
+- currency
+- randomstring
+	-  strs, []string, Delimited separated strings
+- vegetable
+- breakfast
+- loremipsumword
+- httpstatuscodesimple
+- loremipsumsentence
+	-  wordcount, int, Number of words in a sentence
+- ipv4address
+- hackerabbreviation
+- hackernoun
+- lexify
+	-  str, string, String value to replace #'s
+- beeribu
+- email
+- uint8
+- letter
+- sentence
+	-  wordcount, int, Number of words in a sentence
+- emojialias
+- achaccount
+- imagejpeg
+	-  width, int, Image width in px
+	-  height, int, Image height in px
+- imagepng
+	-  width, int, Image width in px
+	-  height, int, Image height in px
+- number
+	-  min, int, Minimum integer value
+	-  max, int, Maximum integer value
+- digitn
+	-  count, uint, Number of digits to generate
+- petname
+- namesuffix
+- flipacoin
+- noun
+- float32
+- username
+- streetsuffix
+- companysuffix
+- json
+	-  type, string, Type of JSON, object or array
+	-  rowcount, int, Number of rows in JSON array
+	-  fields, []Field, Fields containing key name and function to run in json format
+	-  indent, bool, Whether or not to add indents and newlines
+- emojicategory
+- animal
+- snack
+- beerblg
+- safecolor
+- firstname
+- language
+- latitude
+- beername
+- lastname
+- gender
+- httpstatuscode
+- joblevel
+- hackeradjective
+- fileextension
+- streetprefix
+- beermalt
+- date
+	-  format, string, Date time string format output
+- gamertag
+- fruit
+- name
+- rgbcolor
+- beerstyle
+- creditcardtype
+- buzzword
+- emoji
+- longitude
+- longituderange
+	-  min, float, Minimum range
+	-  max, float, Maximum range
+- teams
+	-  people, []string, Array of people
+	-  teams, []string, Array of teams
+- operauseragent
+- hipstersentence
+	-  wordcount, int, Number of words in a sentence
+- float64range
+	-  min, float, Minimum float64 value
+	-  max, float, Maximum float64 value
+- city
+- car
+- ssn
+- timezone
+- digit
+- country
+- streetname
+- preposition
+- word
+- hexcolor
+- useragent
+- chromeuseragent
+- bitcoinprivatekey
+- state
+- beeryeast
+- uint16
+- job
+- jobdescriptor
+- timezoneabv
+- currencyshort
+- hackerphrase
+- numerify
+	-  str, string, String value to replace #'s
+- shufflestrings
+	-  strs, []string, Delimited separated strings
+- lunch
+- phone
+- firefoxuseragent
+
