@@ -10,7 +10,6 @@ import (
 	"github.com/alecthomas/kong"
 	"github.com/brianvoe/gofakeit/v6"
 	"github.com/cheggaaa/pb/v3"
-	"github.com/mattn/go-isatty"
 )
 
 var CLI struct {
@@ -40,7 +39,8 @@ func main() {
 
 	bar := pb.New(int(CLI.SQL.Count))
 
-	shouldProgress := !isatty.IsTerminal(os.Stdout.Fd())
+	stdoutInfo, _ := os.Stdout.Stat()
+	shouldProgress := (stdoutInfo.Mode() & os.ModeCharDevice) == 0
 
 	if shouldProgress {
 		bar.SetWriter(os.Stderr)
