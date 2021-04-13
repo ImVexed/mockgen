@@ -17,7 +17,7 @@ var CLI struct {
 	SQL struct {
 		Bulk  bool   `short:"b" help:"Bulk insert"`
 		Table string `arg help:"Table to insert into"`
-		Count int64  `arg help:"Ammount of rows to generate"`
+		Count uint64 `arg help:"Ammount of rows to generate"`
 
 		Columns map[string]string `arg type:"file:" help:"Columns to create (name={firstname} id={uuid} bio={sentence:30})"`
 	} `cmd help:"Generate SQL mock data"`
@@ -47,7 +47,7 @@ func main() {
 		bar.Start()
 	}
 
-	for i := int64(0); i < CLI.SQL.Count; i++ {
+	for i := uint64(0); i < CLI.SQL.Count; i++ {
 		values := []string{}
 
 		for _, column := range columns {
