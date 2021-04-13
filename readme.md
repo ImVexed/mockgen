@@ -4,7 +4,7 @@ A CLI utility to generate arbitrarily large realistic mock data sets
 ## Background
 After experimenting with other tools in the space, I frequently ran into issues with generating more than 1M rows of test data, so I made my own.
 
-Currently, the tool generates postgres flavored SQL, but maybe in the future that can be expanded to multiple flavores or even formats.
+Currently, the tool generates postgres flavored SQL, but maybe in the future that can be expanded to multiple flavors or even formats.
 
 ## Installation
 
