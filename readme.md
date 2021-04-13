@@ -11,6 +11,8 @@ Currently, the tool generates postgres flavored SQL, but maybe in the future tha
 ```bash
 go install github.com/ImVexed/mockgen@latest
 ```
+
+or download directly from [releases](https://github.com/ImVexed/mockgen/releases)
 ## Usage
 
 ```bash
