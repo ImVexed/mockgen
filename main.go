@@ -9,7 +9,8 @@ import (
 
 	"github.com/alecthomas/kong"
 	"github.com/brianvoe/gofakeit/v6"
-	"github.com/cheggaaa/pb/v3"
+	"github.com/gosuri/uiprogress"
+	"github.com/mattn/go-isatty"
 )
 
 var CLI struct {
@@ -37,14 +38,18 @@ func main() {
 		io.WriteString(os.Stdout, insertStmt+"\n")
 	}
 
-	bar := pb.New(int(CLI.SQL.Count))
+	shouldProgress := !isatty.IsTerminal(os.Stdout.Fd())
 
-	stdoutInfo, _ := os.Stdout.Stat()
-	shouldProgress := (stdoutInfo.Mode() & os.ModeCharDevice) == 0
+	var bar *uiprogress.Bar
 
 	if shouldProgress {
-		bar.SetWriter(os.Stderr)
-		bar.Start()
+		p := uiprogress.New()
+		p.SetOut(os.Stderr)
+		p.Start()
+
+		bar = p.AddBar(int(CLI.SQL.Count))
+		bar.AppendCompleted()
+		bar.PrependElapsed()
 	}
 
 	for i := uint64(0); i < CLI.SQL.Count; i++ {
@@ -79,11 +84,8 @@ func main() {
 		io.WriteString(os.Stdout, row)
 
 		if shouldProgress {
-			bar.Increment()
+			bar.Incr()
 		}
-	}
 
-	if shouldProgress {
-		bar.Finish()
 	}
 }
