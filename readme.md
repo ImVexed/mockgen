@@ -47,7 +47,7 @@ INSERT INTO "message" ("room_id","user_id","author_name","content") VALUES
 
 
 ## Fake Data Types
-Under the hood we use (GoFakeIt)[https://github.com/brianvoe/gofakeit], see their readme for more info
+Under the hood we use [GoFakeIt](https://github.com/brianvoe/gofakeit), see their readme for more info
 
 - address
     - number
